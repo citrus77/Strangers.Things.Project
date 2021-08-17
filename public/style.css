@@ -1,0 +1,45 @@
+@import url(//db.onlinewebfonts.com/c/3f4943f4e662577a8113309f864540a4?family=ITC+Benguiat);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    height: 4em;
+    background-color: #000000;    
+    color: red;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-header {
+    font-size: 28px;
+    font-family: 'ITC Benguiat', serif;
+    font-weight: bolder;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav-link a:visited {
+    color: #ffffff;
+}
+
+.nav-link {    
+    color: #ffffff;
+    padding: 8px;
+}
