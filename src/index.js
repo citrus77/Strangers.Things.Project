@@ -11,20 +11,21 @@ import {
   Write
 } from './components';
 
-const App = (props) => {
+const App = () => {
   return (
   <Router>    
     <div className="app">
-      {/* render coomponents here */}
       <header class="page-header">
         <h1>Stranger's Things</h1>
       </header>
+
       <div id='nav'>
-        <Link to="/write" class="nav-link">New Post</Link>
-        <Link to="/posts" class="nav-link">Posts</Link>        
-        <Link to="/account" class="nav-link">Account</Link>        
-        <Link to="/login" class="nav-link">Login</Link>        
-        <Link to="/register" class="nav-link">Register</Link>
+        <span className="link-bar">
+          <Link to="/posts" class="nav-link">Posts</Link>        
+          <Link to="/login" class="nav-link">Login</Link>        
+          <Link to="/register" class="nav-link">Register</Link>        
+          <Link to="/account" class="nav-link">Account</Link>
+        </span>
       </div>
 
       <div id='main'>
