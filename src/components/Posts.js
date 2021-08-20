@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { APIURL } from '../api'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router,  Link } from 'react-router-dom'
 
 
-const Posts = () => {
+const Posts = ({token}) => {
     const [ posts, setPosts ] = useState([]);
-    console.log(posts)
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -17,11 +16,14 @@ const Posts = () => {
     }, [])
     
     return <>
-        <main>
+        <main className='content'>
             <header className='post-header'>
-                <span className='placeholder' />
-                <h1 className='header'>Posts</h1>
-                <span className='placeholder'><Link to="/write" className="button write-link">New Post</Link></span>
+                <Link to="/search" className="post-button">Search Posts</Link>
+                <h2 className='header'>Posts</h2>
+                {
+                token ? <Link to="/write" className="post-button">New Post</Link> : 
+                <span className='post-button disabled'>New Post</span>                
+                }
             </header>
             {
             posts.map(post => <div key={post._id} className="post-listing">

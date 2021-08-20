@@ -1,0 +1,31 @@
+import React, { useState } from 'react';
+import { useParams, useHistory } from 'react-router';
+import { APIURL } from '../api'
+
+const AccountForm = ({setToken, setUser}) => {    
+    const [ username, setUsername ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const params = useParams();
+    const history = useHistory();
+
+    let fetchUrl
+    params.method === 'register' ? fetchUrl = `${APIRUL}/users/register` : fetchUrl = `${APIRUL}/users/login`;
+
+    return 
+    <div id='content'>
+        <header className='post-header'>
+            <span className='placeholder' />
+            {
+            params.method === 'register' ? <h2 className='header'>Register a new account</h2> : <h2 className='header'>Login to your account</h2>
+                       
+            <span className='placeholder' />
+        </header>
+
+        {
+        params.method === 'register' ? 
+        <form className='log-reg'></form> : <span>else</span>
+        }
+    
+}
+
+export default AccountForm
