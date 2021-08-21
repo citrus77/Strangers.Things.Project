@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import {
     Account,
     Login,
+    LogReg,
     Posts,
     Register,
     Search,
@@ -36,17 +37,21 @@ const App = () => {
             <Account />
           </Route>
   
-          <Route path="/account/login">
+          {/* <Route path="/account/login">
             <Login setToken={setToken} setUser={setUser} />
+          </Route> */}
+
+          <Route path="/account/:method">
+            <LogReg setToken={setToken} setUser={setUser} />
           </Route>
   
           <Route path="/posts">
             <Posts token={token}/>
           </Route>
-
+{/* 
           <Route path="/account/register">
             <Register setToken={setToken} setUser={setUser} />
-          </Route>
+          </Route> */}
   
           <Route path="/search">
             <Search />

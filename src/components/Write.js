@@ -10,8 +10,8 @@ const Write = ({ token }) => {
     return <>
         <h3>Post a new listing!</h3>
 
-        <form onSubmit ={async (event) => {
-            event.preventDefault();
+        <form onSubmit ={async (e) => {
+            e.preventDefault();
             fetch(`${APIURL}/posts`, {
                 method: "POST",
                 headers: {
@@ -40,7 +40,7 @@ const Write = ({ token }) => {
                     name='title'
                     value={title}  
                     placeholder='Title' 
-                    onChange={(event) => setTitle(event.target.value)}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
             </fieldset>
 
@@ -52,7 +52,7 @@ const Write = ({ token }) => {
                     name='description'
                     value={description}  
                     placeholder='Description' 
-                    onChange={(event) => setDescription(event.target.value)}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
             </fieldset>
 
@@ -66,7 +66,7 @@ const Write = ({ token }) => {
                     step="any"
                     value={price}  
                     placeholder='$0.00' 
-                    onChange={(event) => setPrice(event.target.value)}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
             </fieldset>
 
@@ -74,16 +74,16 @@ const Write = ({ token }) => {
                 <label>Will deliver item</label>
                 <select
                     name='willDeliver' 
-                    placeholder='False'
+                    placeholder='No'
                     value={willDeliver}                    
-                    onChange={(event) => setWillDeliver(event.target.value)}>
+                    onChange={(e) => setWillDeliver(e.target.value)}>
                     <option value='false'>No</option>
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-
-            <button type='submit'>Post</button>
-
+            {
+            title==='' || description==='' ? <button disable='true'></button> : <button type='submit'>Post</button>
+            }
         </form>
     </>
 }

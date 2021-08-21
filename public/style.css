@@ -186,3 +186,7 @@ input:current {
     background-color: rgb(39, 39, 39);
     color: #000000;
 }
+
+.input-fieldset {
+    border: 0;
+}
