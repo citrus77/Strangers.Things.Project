@@ -17,19 +17,10 @@ header {
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1vh;
+    margin-bottom: -10px;  
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    background-color: #000000;
-    min-height: 100vh;
-}
-
-.logo {
-    text-decoration: none;       
-    color: #ff0000;    
+.logo {    
     text-shadow:
         -1px -1px 0 #ff000049, 
         1px -1px 0 #ff000049,
@@ -41,7 +32,6 @@ main {
     font-size: 24px;
     font-family: 'ITC Benguiat', serif;
     font-weight: bolder;
-    width: 100vw;  
 }
 
 .content {
@@ -51,8 +41,7 @@ main {
     color: #ffffff;
     align-items: center;
     font-family: 'Atkinson Hyperlegible', sans-serif;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #nav {

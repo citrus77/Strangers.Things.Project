@@ -3,7 +3,7 @@ import { APIURL } from '../api'
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router';
 
-const LogReg = ({ setUser, setToken }) => {
+const LogReg = ({ setLoggedIn, setToken }) => {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ verPass, setVerPass ] = useState('');
@@ -15,7 +15,9 @@ const LogReg = ({ setUser, setToken }) => {
         <header className='post-header'>
             <span className='placeholder' />
             {
-            params.method === 'register' ? <h3 className='header'>Register a new account</h3> : <h3 className='header'>Login to your account</h3>
+            params.method === 'register' 
+                ? <h3 className='header'>Register a new account</h3> 
+                : <h3 className='header'>Login to your account</h3>
             }
             
             <span className='placeholder' />
@@ -23,27 +25,31 @@ const LogReg = ({ setUser, setToken }) => {
         <div className='form-container'>
             <form className='log-reg' onSubmit={async (e) =>{
                 e.preventDefault();
-                const resp = await fetch(`${APIURL}/users/${params.method}`, {
-                    method: "POST",
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                    user: {
-                        username,
-                        password
+                try{
+                    const resp = await fetch(`${REACT_APP_BASE_URL}/users/${params.method}`, {
+                        method: "POST",
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                        user: {
+                            username,
+                            password
+                        }
+                        })
+                    });
+                    const respObj = await resp.json();
+                    if(respObj.data) {
+                        setToken(respObj.data.token);
+                        setLoggedIn(true)
+                        if (respObj.data.token) {
+                            history.push('/profile');
+                        }
                     }
-                    })
-                });
-                const respObj = await resp.json();
-                if(respObj.data) {
-                    setToken(respObj.data.token);
-                    setUser(respObj.data.user);
-                    console.log('respObj: ', respObj)
-                    if (respObj.data.token) {
-                        history.push('/');
-                    }
-                }                
+                }
+                catch(error) {
+                    console.error(error);
+                };                
             }}>
                 <fieldset className='input-fieldset'>
                     <label>User name</label>
@@ -84,10 +90,10 @@ const LogReg = ({ setUser, setToken }) => {
                 
                 {
                 params.method === 'register' 
-                    ? <button type="submit" disabled={!password || !username || password.length < 6 || password !== verPass }>
+                    ? <button className='post-button' type="submit" disabled={!password || !username || password.length < 6 || password !== verPass }>
                         Login
                     </button> 
-                    : <button type="submit" disabled={!password || !username || password.length < 6 }>
+                    : <button className='post-button' type="submit" disabled={!password || !username || password.length < 6 }>
                         Login
                     </button>
                 }
@@ -95,12 +101,18 @@ const LogReg = ({ setUser, setToken }) => {
             </form>
             {
             params.method === 'register' 
-            ? <Link to="/account/login" className='link-to-reg-login'>
-                Already have an account yet? Click here to log in!
-            </Link> 
-            : <Link to="/account/register" className='link-to-reg-login'>
-                Don't have an account yet? Click here to register!
-            </Link>
+            ? <>
+                <span>Already have an account yet? </span>
+                <Link to="/account/login" className='link-to-reg-login'>
+                    Click here to log in!
+                </Link>
+            </> 
+            : <>
+                <span>Already have an account yet? </span>
+                <Link to="/account/register" className='link-to-reg-login'>
+                    Click here to register!
+                </Link>
+            </>
             }
         </div>
     </main>

@@ -2,57 +2,61 @@ import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom'
 
 import {
-    Account,
-    Login,
+    Home,
     LogReg,
     Posts,
-    Register,
+    Profile,
     Search,
     Write
 } from './index.js'
 
-const App = () => {  
+const App = () => {
+    const [ loggedIn, setLoggedIn ] = useState(false);  
     const [ token, setToken ] = useState('');
-    const [ user, setUser ] = useState('');
+    const [ userData, setUserData ] = useState({});
+    const [ messages, setMessages ] = useState([]);
 
     return (    
       <main className="content">
         <header className="page-header">
-          <h1 className='logo'>Stranger's Things</h1>        
+          <Link to ='/home' className='logo'><h1>Stranger's Things</h1></Link>       
   
           <div id='nav'>
             <span className="link-bar">
               <Link to="/posts" className="nav-link">Posts</Link>   
-              <Link to="/account" className="nav-link">Account</Link>
-              { token ? <button onClick={() => setToken('')} className='nav-link logout'>Log out</button>
-                : <Link to="/account/login" className="nav-link">Login/Register</Link>
+              { token
+                ?
+                  <Link to="/profile" className="nav-link">
+                    Profile
+                  </Link>
+                :
+                ''
+              }
+              { token
+                ?
+                  <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout'>Log out</button>
+                : 
+                  <Link to="/account/login" className="nav-link">
+                    Login/Register
+                  </Link>
               }
             </span>
           </div>
         </header>
   
         <div id='content'>
-
-          <Route path="/account">
-            <Account />
-          </Route>
-  
-          {/* <Route path="/account/login">
-            <Login setToken={setToken} setUser={setUser} />
-          </Route> */}
-
           <Route path="/account/:method">
-            <LogReg setToken={setToken} setUser={setUser} />
+            <LogReg setToken={setToken} setLoggedIn={setLoggedIn}/>
           </Route>
   
           <Route path="/posts">
             <Posts token={token}/>
           </Route>
-{/* 
-          <Route path="/account/register">
-            <Register setToken={setToken} setUser={setUser} />
-          </Route> */}
-  
+
+          <Route path="/profile">
+            <Profile messages={messages} setMessages={setMessages} token={token} userData={userData} setUserData={setUserData}/>
+          </Route>
+
           <Route path="/search">
             <Search />
           </Route>
@@ -62,9 +66,8 @@ const App = () => {
           </Route>
   
           <Route exact path="/">
-            <Posts token={token}/>
+            <Home userData={userData}/>
           </Route>
-
         </div>
   
       </main>

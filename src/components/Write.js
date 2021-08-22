@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { APIURL } from '../api'
+
+const { REACT_APP_BASE_URL } = process.env;
 
 const Write = ({ token }) => {
+    const [ location, setLocation ] = useState('')
     const [ title, setTitle ] = useState('');    
     const [ description, setDescription ] = useState('');
     const [ price, setPrice ] = useState('');
@@ -12,7 +14,8 @@ const Write = ({ token }) => {
 
         <form onSubmit ={async (e) => {
             e.preventDefault();
-            fetch(`${APIURL}/posts`, {
+            try{
+            fetch(`${REACT_APP_BASE_URL}/posts`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,17 +23,17 @@ const Write = ({ token }) => {
                 },
                 body: JSON.stringify({
                     post: {
+                        location,
                         title,
                         description,
                         price,
                         willDeliver
                     }
                 })
-                }).then(response => response.json())
-                .then(result => {
-                    console.log(result);
                 })
-                .catch(console.error);
+            } catch(error) {
+                console.error(error)
+            }
         }}>
             <fieldset>
                 <label>Title</label>
@@ -51,7 +54,8 @@ const Write = ({ token }) => {
                     type='text' 
                     name='description'
                     value={description}  
-                    placeholder='Description' 
+                    placeholder='Description'
+                    style={{height: 100}} 
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </fieldset>
@@ -66,7 +70,19 @@ const Write = ({ token }) => {
                     step="any"
                     value={price}  
                     placeholder='$0.00' 
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice('$' + e.target.value)}
+                />
+            </fieldset>
+
+            <fieldset>
+                <label>Location</label>
+                <input 
+                    className='input-field' 
+                    type='text' 
+                    name='title'
+                    value={location}  
+                    placeholder='Location' 
+                    onChange={(e) => setLocation(e.target.value)}
                 />
             </fieldset>
 
@@ -81,9 +97,7 @@ const Write = ({ token }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            {
-            title==='' || description==='' ? <button disable='true'></button> : <button type='submit'>Post</button>
-            }
+            <button disable={ !title || !description }></button>
         </form>
     </>
 }

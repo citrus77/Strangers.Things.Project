@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { APIURL } from '../api'
-import { BrowserRouter as Router,  Link } from 'react-router-dom'
+import { BrowserRouter as Link } from 'react-router-dom';
 
+const { REACT_APP_BASE_URL } = process.env;
 
 const Posts = ({token}) => {
     const [ posts, setPosts ] = useState([]);
-
+    console.log(posts)
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch(`${APIURL}/posts/`);            
+            const response = await fetch(`${REACT_APP_BASE_URL}/posts/`);            
             const results = await response.json();
             setPosts(results.data.posts);
         }
