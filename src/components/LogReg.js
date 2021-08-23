@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { APIURL } from '../api'
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router';
+
+const { REACT_APP_BASE_URL } = process.env;
 
 const LogReg = ({ setLoggedIn, setToken }) => {
     const [ username, setUsername ] = useState('');

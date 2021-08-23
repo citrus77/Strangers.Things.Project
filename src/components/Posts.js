@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Route, Link } from 'react-router-dom';
 
-const { REACT_APP_BASE_URL } = process.env;
+import {
+    SinglePost
+} from './index'
 
-const Posts = ({token}) => {
-    const [ posts, setPosts ] = useState([]);
-    console.log(posts)
-    useEffect(() => {
-        const fetchPosts = async () => {
-            const response = await fetch(`${REACT_APP_BASE_URL}/posts/`);            
-            const results = await response.json();
-            setPosts(results.data.posts);
-        }
-        fetchPosts()
-    }, [])
-    
+const Posts = ({posts, token}) => {
     return <>
         <main className='content'>
             <header className='post-header'>
@@ -26,11 +17,8 @@ const Posts = ({token}) => {
                 }
             </header>
             {
-            posts.map(post => <div key={post._id} className="post-listing">
-                <h3 className='post-title'>{post.title}</h3>
-                <span className='description'>{post.description}</span>
-            </div>
-            )}
+                posts.map(post => <SinglePost key={post._id} post={post} />)
+            }
         </main>
     </>
 }
