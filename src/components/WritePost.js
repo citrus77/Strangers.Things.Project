@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 import { callApi } from '../util';
 
-const Write = ({ setPosts, token }) => {
+const WritePost = ({ setPosts, token }) => {
     const [ location, setLocation ] = useState('')
     const [ title, setTitle ] = useState('');    
     const [ description, setDescription ] = useState('');
@@ -104,4 +104,4 @@ const Write = ({ setPosts, token }) => {
     </>
 }
 
-export default Write;
+export default WritePost;

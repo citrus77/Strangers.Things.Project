@@ -6,17 +6,20 @@ import {
   Posts,
   Home,
   Search,
-  Write
-} from './index'
+  WriteMessage,
+  WritePost
+} from './'
 
 const { REACT_APP_BASE_URL } = process.env;
 
 const App = () => {
-  const [ loggedIn, setLoggedIn ] = useState(false);  
-  const [ token, setToken ] = useState('');
-  const [ posts, setPosts ] = useState([]);
-  const [ userData, setUserData ] = useState({});
+  const [ active, setActive] = useState(false);
+  const [ currentPostId, setCurrentPostId] = useState('');
+  const [ loggedIn, setLoggedIn ] = useState(false);
   const [ messages, setMessages ] = useState([]);
+  const [ posts, setPosts ] = useState([]);  
+  const [ token, setToken ] = useState('');
+  const [ userData, setUserData ] = useState({});
   const [ isExpanded, setIsExpanded ] = useState(false)
   
   const fetchPosts = async () => {
@@ -26,7 +29,11 @@ const App = () => {
     if (posts) setPosts(posts);
   }
   
-  const props = { 
+  const props = {
+    active,
+    setActive,
+    currentPostId,
+    setCurrentPostId, 
     loggedIn, 
     setLoggedIn, 
     token, 
@@ -93,7 +100,11 @@ const App = () => {
         </Route>
   
         <Route exact path="/write">
-          <Write {...props} />
+          <WritePost {...props} />
+        </Route>
+
+        <Route exact path='/message'>
+          <WriteMessage {...props} />
         </Route>
       </div>
   

@@ -6,4 +6,5 @@ export { default as Posts } from './Posts';
 export { default as Search } from './Search';
 export { default as SingleMessage } from './SingleMessage'
 export { default as SinglePost } from './SinglePost'
-export { default as Write } from './Write';
+export { default as WriteMessage } from './WriteMessage'
+export { default as WritePost } from './WritePost';
