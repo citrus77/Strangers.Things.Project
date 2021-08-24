@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 import { callApi } from '../util';
 
-const Write = ({ fetchPosts, setPosts, token }) => {
+const Write = ({ setPosts, token }) => {
     const [ location, setLocation ] = useState('')
     const [ title, setTitle ] = useState('');    
     const [ description, setDescription ] = useState('');
@@ -25,9 +25,9 @@ const Write = ({ fetchPosts, setPosts, token }) => {
                     description, 
                     price, 
                     willDeliver
+                }
             }
-        }
-        })
+        });
         const postsResp = await callApi({url: '/posts', token})
         setPosts(postsResp.data.posts);
         history.push('/posts')

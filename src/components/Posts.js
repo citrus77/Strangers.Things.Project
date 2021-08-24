@@ -5,13 +5,13 @@ import {
     SinglePost
 } from './'
 
-const Posts = ({fetchPosts, posts, token}) => {
+const Posts = ({fetchPosts, posts, token, userData}) => {
     console.log(posts)
 
     const handleDelete = async (postId) => {
         const respObj = await callApi({
             method: 'DELETE',
-            url: `posts/${postId}`,
+            url: `/posts/${postId}`,
             token
         });
 
@@ -33,7 +33,7 @@ const Posts = ({fetchPosts, posts, token}) => {
             {
                 posts.map(post => <SinglePost key={post._id} post={post}>
                    {
-                       token && <button onClick={() => handleDelete(post._id)}>Delete post</button>
+                       post.author._id ===  userData._id && <button onClick={() => handleDelete(post._id)}>Delete post</button>
                    }
                 </SinglePost>)
             }
