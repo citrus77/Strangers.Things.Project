@@ -1,40 +1,46 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
-const { REACT_APP_BASE_URL } = process.env;
+import { callApi } from '../util';
 
-const Write = ({ token }) => {
+const Write = ({ token, setPosts }) => {
     const [ location, setLocation ] = useState('')
     const [ title, setTitle ] = useState('');    
     const [ description, setDescription ] = useState('');
     const [ price, setPrice ] = useState('');
     const [ willDeliver, setWillDeliver ] = useState(false);
+    
+    const history = useHistory();
+
+    const handleWrite = async (e) => {
+        e.preventDefault();
+        // try{ 
+        //     const resp = await callApi ({
+        //         url: `/posts`,
+        //         method: 'POST',
+        //         body: {
+        //             user: {
+        //                 location,
+        //                 title,
+        //                 description,
+        //                 price,
+        //                 willDeliver
+        //             }
+        //         }
+        //     })
+        //     const postsResp = await callApi({url: '/posts', token});
+        //     setPosts(postsResp);
+        //     history.push('/posts');            }            
+        // }
+        // catch(err) {
+        //     console.error(err);
+        // }
+    }
 
     return <>
         <h3>Post a new listing!</h3>
 
-        <form onSubmit ={async (e) => {
-            e.preventDefault();
-            try{
-            fetch(`${REACT_APP_BASE_URL}/posts`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    post: {
-                        location,
-                        title,
-                        description,
-                        price,
-                        willDeliver
-                    }
-                })
-                })
-            } catch(error) {
-                console.error(error)
-            }
-        }}>
+        <form onSubmit ={handleWrite(token)}>
             <fieldset>
                 <label>Title</label>
                 <input 
@@ -70,7 +76,7 @@ const Write = ({ token }) => {
                     step="any"
                     value={price}  
                     placeholder='$0.00' 
-                    onChange={(e) => setPrice('$' + e.target.value)}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
             </fieldset>
 
@@ -97,7 +103,7 @@ const Write = ({ token }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            <button disable={ !title || !description }></button>
+            <button disable={ !title || !description }>Post</button>
         </form>
     </>
 }

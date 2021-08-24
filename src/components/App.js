@@ -14,9 +14,10 @@ const { REACT_APP_BASE_URL } = process.env;
 const App = () => {
   const [ loggedIn, setLoggedIn ] = useState(false);  
   const [ token, setToken ] = useState('');
-  const [ posts, setPosts ] = useState([]);  
+  const [ posts, setPosts ] = useState([]);
   const [ userData, setUserData ] = useState({});
   const [ messages, setMessages ] = useState([]);
+  const [ isExpanded, setIsExpanded ] = useState(false)
   
   const props = { 
     loggedIn, 
@@ -28,7 +29,9 @@ const App = () => {
     userData, 
     setUserData, 
     messages, 
-    setMessages 
+    setMessages,
+    isExpanded,
+    setIsExpanded,
   }
 
   useEffect(() => {
@@ -44,31 +47,7 @@ const App = () => {
     catch (error) {
       console.error(error);
     }
-    
-    try {
-      const fetchUserData = async () => {        
-        const response = await fetch(`${REACT_APP_BASE_URL}/users/me`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-        });          
-        const results = await response.json();
-        const userData = results.data;
-        // console.log(userData)
-        if (userData) {
-          setUserData(userData);
-          const messages = userData.messages
-          setMessages(messages)
-          // console.log(messages)
-        }
-      }
-      fetchUserData();      
-    }
-    catch (error) {
-      console.error(error);
-    }
-
+    console.log(token)   
   }, [token]);
 
   return <>    
@@ -82,8 +61,8 @@ const App = () => {
             <Link to="/home" className="nav-link">Home</Link>
             { 
               token
-                ? <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout'>Log out</button>
-                : <Link to="/account/login" className="nav-link">Login/Register</Link>
+                    ? <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout'>Log out</button>
+                    : <Link to="/account/login" className="nav-link">Login/Register</Link>
             }
           </span>
         </div>

@@ -3,8 +3,9 @@ import React from 'react';
 const SingleMessage = ({message}) => {
     return message
     ? <div className="message-listing">
-        <h3 className='message-content'>{message.content}</h3>
-        <span className='message-sender'>{message.fromUser.username}</span>
+        <h4 className='message-header'>{message.fromUser.username} commented on "{message.post.title}"</h4>
+        <span className='message-content'>{message.content}</span>
+        
     </div>
     : 'Loading...'
 }

@@ -11,6 +11,7 @@ const Home = ({ loggedIn, messages, userData }) => {
         {
         userData ? <h2 className='header'>Welcome {`${userData.username}`} </h2> : ''
         }
+        <Link to="/write" className="post-button">New Post</Link>
         <Messages userData={userData} messages={messages} />
     </>
     

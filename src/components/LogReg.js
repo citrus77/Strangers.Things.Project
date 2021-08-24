@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useParams, useHistory } from 'react-router';
+import { callApi } from '../util';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-const LogReg = ({ setLoggedIn, setToken }) => {
+const LogReg = ({ setLoggedIn, setMessages, setUserData, setUserPosts, setToken }) => {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ verPass, setVerPass ] = useState('');
@@ -26,25 +27,29 @@ const LogReg = ({ setLoggedIn, setToken }) => {
         <div className='form-container'>
             <form className='log-reg' onSubmit={async (e) =>{
                 e.preventDefault();
-                try{
-                    const resp = await fetch(`${REACT_APP_BASE_URL}/users/${params.method}`, {
-                        method: "POST",
-                        headers: {
-                        'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                        user: {
-                            username,
-                            password
+                try{ 
+                    const resp = await callApi ({
+                        url: `/users/${params.method}`,
+                        method: 'POST',
+                        body: {
+                            user: {
+                                username,
+                                password
+                            }
                         }
-                        })
-                    });
-                    const respObj = await resp.json();
-                    if(respObj.data) {
-                        setToken(respObj.data.token);
-                        setLoggedIn(true)
-                        if (respObj.data.token) {
-                            history.push('/profile');
+                    })
+                    
+                    if(resp.data) {
+                        const userResp = await callApi({url: '/users/me', token: resp.data.token});
+
+                        setToken(resp.data.token);
+                        setUserData(userResp.data);
+                        setLoggedIn(true);
+                        
+                        setMessages(userResp.data.messages);
+
+                        if (resp.data.token) {
+                          history.push('/');
                         }
                     }
                 }
@@ -92,7 +97,7 @@ const LogReg = ({ setLoggedIn, setToken }) => {
                 {
                 params.method === 'register' 
                     ? <button className='post-button' type="submit" disabled={!password || !username || password.length < 6 || password !== verPass }>
-                        Login
+                        Register
                     </button> 
                     : <button className='post-button' type="submit" disabled={!password || !username || password.length < 6 }>
                         Login
