@@ -14,33 +14,29 @@ const Write = ({ token, setPosts }) => {
 
     const handleWrite = async (e) => {
         e.preventDefault();
-        // try{ 
-        //     const resp = await callApi ({
-        //         url: `/posts`,
-        //         method: 'POST',
-        //         body: {
-        //             user: {
-        //                 location,
-        //                 title,
-        //                 description,
-        //                 price,
-        //                 willDeliver
-        //             }
-        //         }
-        //     })
-        //     const postsResp = await callApi({url: '/posts', token});
-        //     setPosts(postsResp);
-        //     history.push('/posts');            }            
-        // }
-        // catch(err) {
-        //     console.error(err);
-        // }
+            const resp = await callApi ({
+                url: `/posts`,
+                method: 'POST',
+                token,
+                body: {
+                    user: {
+                        location,
+                        title,
+                        description,
+                        price,
+                        willDeliver
+                    }
+                }
+            })
+            const postsResp = await callApi({url: '/posts', token});
+            setPosts(postsResp);
+            history.push('/posts');      
     }
 
     return <>
         <h3>Post a new listing!</h3>
 
-        <form onSubmit ={handleWrite(token)}>
+        <form onSubmit = {handleWrite}>
             <fieldset>
                 <label>Title</label>
                 <input 
@@ -103,7 +99,7 @@ const Write = ({ token, setPosts }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            <button disable={ !title || !description }>Post</button>
+            <button type='submit' disable={ !title || !description || !price }>Post</button>
         </form>
     </>
 }
