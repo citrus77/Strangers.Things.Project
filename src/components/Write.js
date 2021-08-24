@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 import { callApi } from '../util';
 
-const Write = ({ token, setPosts }) => {
+const Write = ({ fetchPosts, setPosts, token }) => {
     const [ location, setLocation ] = useState('')
     const [ title, setTitle ] = useState('');    
     const [ description, setDescription ] = useState('');
@@ -14,23 +14,23 @@ const Write = ({ token, setPosts }) => {
 
     const handleWrite = async (e) => {
         e.preventDefault();
-            const resp = await callApi ({
-                url: `/posts`,
-                method: 'POST',
-                token,
-                body: {
-                    user: {
-                        location,
-                        title,
-                        description,
-                        price,
-                        willDeliver
-                    }
-                }
-            })
-            const postsResp = await callApi({url: '/posts', token});
-            setPosts(postsResp);
-            history.push('/posts');      
+        const postResp = await callApi({
+            url: '/posts', 
+            method: 'POST', 
+            token, 
+            body: {
+                post: {
+                    location, 
+                    title, 
+                    description, 
+                    price, 
+                    willDeliver
+            }
+        }
+        })
+        const postsResp = await callApi({url: '/posts', token})
+        setPosts(postsResp.data.posts);
+        history.push('/posts')
     }
 
     return <>
@@ -99,7 +99,7 @@ const Write = ({ token, setPosts }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            <button type='submit' disable={ !title || !description || !price }>Post</button>
+            <button type='submit' disabled={ !title || !description || !price }>Post</button>
         </form>
     </>
 }

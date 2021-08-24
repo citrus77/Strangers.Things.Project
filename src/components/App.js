@@ -19,6 +19,13 @@ const App = () => {
   const [ messages, setMessages ] = useState([]);
   const [ isExpanded, setIsExpanded ] = useState(false)
   
+  const fetchPosts = async () => {
+    const response = await fetch(`${REACT_APP_BASE_URL}/posts`);            
+    const results = await response.json();
+    const posts = results.data.posts;
+    if (posts) setPosts(posts);
+  }
+  
   const props = { 
     loggedIn, 
     setLoggedIn, 
@@ -32,22 +39,18 @@ const App = () => {
     setMessages,
     isExpanded,
     setIsExpanded,
+
+    fetchPosts
   }
 
+  
+
   useEffect(() => {
-    try {
-      const fetchPosts = async () => {
-        const response = await fetch(`${REACT_APP_BASE_URL}/posts/`);            
-        const results = await response.json();
-        const posts = results.data.posts;
-        if (posts) setPosts(posts);
-      }
+    try {      
       fetchPosts();      
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
-    }
-    console.log(token)   
+    } 
   }, [token]);
 
   return <>    
@@ -74,7 +77,7 @@ const App = () => {
         </Route>
 
         <Route exact path='/'>
-          <Home { ...props } />
+          <Home {...props} />
         </Route>
 
         <Route exact path="/home">

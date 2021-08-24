@@ -45,7 +45,7 @@ const LogReg = ({ setLoggedIn, setMessages, setUserData, setUserPosts, setToken 
                         setToken(resp.data.token);
                         setUserData(userResp.data);
                         setLoggedIn(true);
-                        
+                        console.log(userResp.data)
                         setMessages(userResp.data.messages);
 
                         if (resp.data.token) {
