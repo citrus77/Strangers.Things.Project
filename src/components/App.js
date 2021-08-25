@@ -60,25 +60,22 @@ const App = () => {
     } 
   }, [token]);
 
-  return <>    
-    <main className="content">
-      <header className="page-header">
+  return <>
+      <header className="site-header">
         <Link to ='/home' className='logo'><h1>Stranger's Things</h1></Link>       
   
-        <div id='nav'>
-          <span className="link-bar">
-            <Link to="/posts" className="nav-link">Posts</Link>   
-            <Link to="/home" className="nav-link">Home</Link>
-            { 
-              token
-                    ? <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout'>Log out</button>
-                    : <Link to="/account/login" className="nav-link">Login/Register</Link>
-            }
-          </span>
+        <div className='link-bar'>
+          <Link to="/posts" className="nav-link">Posts</Link>   
+          <Link to="/home" className="nav-link">Home</Link>
+          { 
+            token
+                  ? <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout set-right'>Log out</button>
+                  : <Link to="/account/login" className="nav-link set-right">Login/Register</Link>
+          }
         </div>
       </header>
   
-      <div id='content'>
+      <main id='content'>
         <Route exact path="/account/:method">
           <LogReg {...props} />
         </Route>
@@ -106,8 +103,6 @@ const App = () => {
         <Route exact path='/message'>
           <WriteMessage {...props} />
         </Route>
-      </div>
-  
     </main>
   </>
 }

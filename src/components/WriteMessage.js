@@ -17,8 +17,7 @@ const WriteMessage = ({currentPostId, post, token}) => {
         });
     }
 
-    return <>
-        <main className='content'>
+    return <div>
             <form onSubmit={handleWriteMessage}>
                 <fieldset>
                     <input name='content' placeholder='Write a reply' value={content} onChange={(e)=>
@@ -27,9 +26,7 @@ const WriteMessage = ({currentPostId, post, token}) => {
                     <button type='submit' disabled={ !content || !token }>Send</button>
                 </fieldset>
             </form>
-        </main>
-    </>;
-
-}
+        </div>;
+};
 
 export default WriteMessage;

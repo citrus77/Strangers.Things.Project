@@ -51,8 +51,8 @@ const Posts = ({currentPostId, fetchPosts, posts, setActive, setCurrentPostId, t
     }
 
     return <>
-        <main className='content'>
-            <header className='post-header'>
+        <div className='content'>
+            <div className='posts-header'>
                 <Link to="/search" className="post-button">Search Posts</Link>
                 <h2 className='header'>Posts</h2>
                 {
@@ -60,7 +60,7 @@ const Posts = ({currentPostId, fetchPosts, posts, setActive, setCurrentPostId, t
                             ? <Link to="/write" className="post-button">New Post</Link> 
                             : <span className='post-button disabled'>New Post</span>                
                 }
-            </header>
+            </div>
             {
                 posts.map(post => <SinglePost key={post._id} post={post}>
                     {
@@ -71,7 +71,7 @@ const Posts = ({currentPostId, fetchPosts, posts, setActive, setCurrentPostId, t
                     }
                 </SinglePost>)
             }
-        </main>
+        </div>
     </>
 }
 export default Posts;

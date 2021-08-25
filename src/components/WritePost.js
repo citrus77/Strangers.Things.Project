@@ -33,7 +33,7 @@ const WritePost = ({ setPosts, token }) => {
         history.push('/posts')
     }
 
-    return <>
+    return <div>
         <h3>Post a new listing!</h3>
 
         <form onSubmit = {handleWrite}>
@@ -101,7 +101,7 @@ const WritePost = ({ setPosts, token }) => {
             </fieldset>
             <button type='submit' disabled={ !title || !description || !price }>Post</button>
         </form>
-    </>
-}
+    </div>;
+};
 
 export default WritePost;

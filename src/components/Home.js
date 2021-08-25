@@ -7,15 +7,17 @@ import {
 
 const Home = ({ loggedIn, messages, userData }) => {
     if (loggedIn) 
-    return <>
+    return <div>
         {
-        userData ? <h2 className='header'>Welcome {`${userData.username}`} </h2> : ''
+        userData 
+                ? <h2 className='header'>Welcome {`${userData.username}`} </h2> 
+                : ''
         }
         <Link to="/write" className="post-button">New Post</Link>
         <Messages userData={userData} messages={messages} />
-    </>
+    </div>
     
-    else return <>
+    else return <div>
         <h2 className='header'>Welcome Guest!</h2>
         <br />
         <div>
@@ -24,7 +26,7 @@ const Home = ({ loggedIn, messages, userData }) => {
         <div>
             <Link to='/posts' className='link-to-reg-login'>Click here</Link> to view the posts!
         </div>
-    </>
+    </div>
 };
 
 export default Home;

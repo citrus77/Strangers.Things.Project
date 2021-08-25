@@ -5,16 +5,14 @@ import {
 } from './index'
 
 const Messages = ({ messages }) => {
-    return <>
-        <main className='content'>
-            <header className='message-header'>
+    return <div>
+            <div className='message-header'>
                 <h2 className='header'>Your messages</h2>                
-            </header>
+            </div>
             {
                 messages.map(message => <SingleMessage key={message._id} message={message} />)
             }
-        </main>
-    </>;
+        </div>;
 };
 
 export default Messages;

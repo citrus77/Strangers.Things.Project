@@ -1,1 +1,0 @@
-export const APIURL='https://strangers-things.herokuapp.com/api/2105-SJS-RM-WEB-PT'
