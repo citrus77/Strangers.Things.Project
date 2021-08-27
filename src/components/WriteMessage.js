@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
 import { callApi } from '../util';
+import { useHistory } from 'react-router';
 
-const WriteMessage = ({currentPostId, post, token}) => {
-    const [content, setContent] = useState('');
+const WriteMessage = ({post, token}) => {
+  const [content, setContent ] = useState('');
+  const history = useHistory();
 
-    const handleWriteMessage = async () => {
-        const msgResp = await callApi({
-            url: '/posts/${currentPostId}/messages', 
-            method: 'POST', 
-            token, 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        const url = `/posts/${post._id}/messages`;
+        const data = await callApi({
+            method: 'POST',
+            url,
+            token,
             body: {
                 message: {
-                    content
+                content
                 }
             }
         });
+        history.push('./')
     }
-
-    return <div>
-            <form onSubmit={handleWriteMessage}>
-                <fieldset>
-                    <input name='content' placeholder='Write a reply' value={content} onChange={(e)=>
-                    setContent(e.target.value)}>
-                    </input>
-                    <button type='submit' disabled={ !content || !token }>Send</button>
-                </fieldset>
-            </form>
-        </div>;
-};
+    catch (error) {
+        console.error(error)
+    }
+    
+  };
+  return <>
+    <form onSubmit={handleSubmit}>
+      <input value={content} placeholder="Write your reply" onChange={(e) => setContent(e.target.value)}></input>
+      <button type="submit">Send</button>
+    </form>
+  </>
+}
 
 export default WriteMessage;

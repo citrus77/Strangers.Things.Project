@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom'
 
-import {  
+import {
+  Footer, 
   LogReg,
   Posts,
   Home,
+  PostView,
   Search,
   WriteMessage,
   WritePost
@@ -13,8 +15,8 @@ import {
 const { REACT_APP_BASE_URL } = process.env;
 
 const App = () => {
-  const [ active, setActive] = useState(false);
-  const [ currentPostId, setCurrentPostId] = useState('');
+  const [ active, setActive ] = useState(false);
+  const [ currentPostId, setCurrentPostId ] = useState('');
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ messages, setMessages ] = useState([]);
   const [ posts, setPosts ] = useState([]);  
@@ -95,6 +97,10 @@ const App = () => {
         <Route exact path="/search">
           <Search {...props} />
         </Route>
+
+        <Route exact path='/posts/:postId'>
+          <PostView {...props} />
+        </Route>
   
         <Route exact path="/write">
           <WritePost {...props} />
@@ -104,6 +110,7 @@ const App = () => {
           <WriteMessage {...props} />
         </Route>
     </main>
+    <Footer />
   </>
 }
 

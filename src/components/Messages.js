@@ -5,7 +5,7 @@ import {
 } from './index'
 
 const Messages = ({ messages }) => {
-    return <div>
+    return <div className='messages'>
             <div className='message-header'>
                 <h2 className='header'>Your messages</h2>                
             </div>

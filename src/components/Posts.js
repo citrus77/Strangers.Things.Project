@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { callApi } from '../util'
 
 import {
-    SinglePost,
-    WriteMessage
+    Search,
+    SinglePost
 } from './'
 
 
 
-const Posts = ({currentPostId, fetchPosts, posts, setActive, setCurrentPostId, token, userData}) => {            
-    const [content, setContent] = useState('');
-    console.log(posts)
+const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
     const history = useHistory();
 
     const handleDelete = async (postId) => {
@@ -25,49 +23,24 @@ const Posts = ({currentPostId, fetchPosts, posts, setActive, setCurrentPostId, t
         await fetchPosts()
     }
 
-    const handleReply =  async () => {
-
-        return <>
-            <form onSubmit={
-                await callApi({
-                    url: '/posts/${currentPostId}/messages', 
-                    method: 'POST', 
-                    token, 
-                    body: {
-                        message: {
-                            content
-                        }
-                    }
-                })
-            }>
-                <fieldset>
-                    <input name='content' placeholder='Write a reply' value={content} onChange={(e)=>
-                        setContent(e.target.value)}>
-                    </input>
-                    <button type='submit' disabled={ !content || !token }>Send</button>
-                </fieldset>
-            </form>
-        </>
-    }
-
     return <>
-        <div className='content'>
+        <div>
             <div className='posts-header'>
-                <Link to="/search" className="post-button">Search Posts</Link>
-                <h2 className='header'>Posts</h2>
+                <h2 className='page-header'>Posts</h2>
                 {
                     token 
                             ? <Link to="/write" className="post-button">New Post</Link> 
                             : <span className='post-button disabled'>New Post</span>                
                 }
+                <Search />                
             </div>
             {
-                posts.map(post => <SinglePost key={post._id} post={post}>
-                    {
-                        post.author._id ===  userData._id && <button onClick={() => handleDelete(post._id)}>Delete post</button>                   
-                    }
+                posts.map(post => <SinglePost key={post._id} post={post} loggedIn={loggedIn}>
                     {   
-                        post.author._id !==  userData._id && <button onClick = { handleReply && setCurrentPostId(post._id) }>Reply</button>  
+                        post && <Link to={`/posts/${post._id}`}>View</Link>
+                    }
+                    {
+                        post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash18px.png"} width='13' height='13' />DELETE</button>                   
                     }
                 </SinglePost>)
             }

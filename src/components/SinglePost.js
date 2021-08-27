@@ -5,12 +5,13 @@ const SinglePost = ({ children, post, setIsExpanded }) => {
     return post
     ? <div className='post-listing' onClick={e =>
         console.log('clicked')}>
-        <h3 className='post-title'>{post.title}</h3>
+        <span className='single-post-title'><h3 className='post-title'>{post.title}</h3><span className='author'>by {post.author.username}</span></span>
         <span className='description'>{post.description}</span>
         <br />
         <span className='post-bottom'>
-            <h3 className='post-el-header'>Price:</h3> {post.price} <h3 className='post-el-header'>Location:</h3> {post.location} 
-            <h3 className='post-el-header'>Will Deliver:</h3> { post.willDeilver ? 'yes' : 'no' }
+            <span className="post-bottom-elem"><h3 className='post-elem-header'>Price:</h3> {post.price}</span> 
+            <span className="post-bottom-elem"><h3 className='post-elem-header'>Location:</h3> {post.location}</span>
+            <span className="post-bottom-elem"><h3 className='post-elem-header'>Will Deliver:</h3> { post.willDeliver ? 'yes' : 'no' }</span>
             { children }            
         </span>        
     </div>

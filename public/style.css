@@ -8,9 +8,6 @@
     color: #ffffffe5;
     color: #fc3232;
     color: #272727;
-    color: ;
-    color: ;
-    color: ;
 }
     
 * {
@@ -38,21 +35,39 @@ header {
     align-content: center;
     justify-items: center;
     position: fixed;
-    overflow: auto;
+    overflow: hidden;
     width: 80vw;
     border-bottom:.5px solid #fc3232;
 }
+
 
 main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 20vh;
+    margin-top: 8em;
     align-items: center;
     align-content: center;
     justify-items: center;
     justify-content: center;
     width: 80vw;
+    margin-bottom: 3em;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #000000;;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    height: 3em;
+    overflow: hidden;
+    bottom: 0;
+    width: 80vw;
+    border-top:.5px solid #fc3232;
 }
 
 .logo {
@@ -75,8 +90,9 @@ main {
 
 .posts-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 80vw;
     font-size: 24px;
     font-family: 'ITC Benguiat', serif;
@@ -124,6 +140,12 @@ main {
 }
 
 .content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     width: 80vw;    
     overflow: hidden;
 }
@@ -137,7 +159,7 @@ main {
 .post-bottom {
     display: flex;
     justify-content: space-between;
-    color: #000000;
+    color: #ffffff;
     border-top: .5px dotted #fc3232;
     padding-top: 6px;
 }
@@ -150,17 +172,28 @@ main {
     min-height: 96px;
     border-radius: 18px;
     border: 1px solid #fc3232;
-    background-color: #ffffffe5;
-    color: #242323;
+    background-color: #110f0f;
+    color: #ffffff;
     margin: 12px;
     padding: 12px;
 }
 
+.single-post-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: .5px solid #00bee1;
+}
+
 .post-title {
     display: flex;
-    border-bottom: .5px solid #243323;
+    color: #fc3232d7;
     padding-bottom: 4px;
+    font-size: 18px;
     font-family: 'ITC Benguiat', serif;
+}
+
+.author {
+    color: #00bee1;
 }
 
 h3 {
@@ -182,6 +215,7 @@ h3 {
     padding: 8px;
     border-radius: 32px;
     font-family: 'ITC Benguiat', serif;
+    font-size: 18px;
     text-decoration: none;    
 }
 
@@ -246,8 +280,7 @@ fieldset {
 }
 
 .form-container {
-    background-color: #313131;
-    background-image: url("https://i.pinimg.com/originals/c8/24/29/c8242950d57953129274a55b68aab3a1.jpg");
+    background-color: #110f0f;
     display: flex;
     flex-direction: column;
     min-height: 380px;
@@ -295,4 +328,87 @@ fieldset {
     color: #696969;
     font-weight: normal;
     border: 0;
+}
+
+.search-form {
+    height: 24px;
+    margin-bottom: 10px;    
+}
+
+.search-input {
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    align-content: center;
+    text-align: center;
+    border: .5px solid #fc3232;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-input:placeholder-shown {
+    text-align: center;
+    font-style: italic;
+}
+
+.search-button {
+    border: 0;
+    background-color: #ffffff;
+    text-decoration: none;
+    min-height: 24px;
+}
+
+.prev-posts {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 5em;
+}
+
+.prev-post {
+    margin: 8px;
+    font-style: italic;
+}
+
+.prev-post-title {
+    color: #fc3232;
+    font-style: bold;
+}
+
+.messages {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 5em;
+}
+
+.delete-post {
+    display: flex;
+    font-size: 13px;
+    font-style: bolder;
+    background: #ff0000;
+    color: #ffffffb0;
+    padding: 4px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+    align-content: center;
+    align-items: center;
+    justify-items: start;
+    border-top: 1px solid #ffffffb0;
+    border-bottom: 1px solid #ffffffb0;
+    border-left: 1px solid #ffffffb0;
+    height: 32px;
+    margin-right: -12px;
+}
+
+.delete-post:hover {
+    background: #fc3232;
+    border: #ff0000;
 }
