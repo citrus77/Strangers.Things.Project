@@ -37,7 +37,7 @@ const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
             {
                 posts.map(post => <SinglePost key={post._id} post={post} loggedIn={loggedIn}>
                     {   
-                        post && <Link to={`/posts/${post._id}`}>View</Link>
+                        post && <Link to={`/posts/${post._id}`} className='view-post-button'>VIEW</Link>
                     }
                     {
                         post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash18px.png"} width='13' height='13' />DELETE</button>                   

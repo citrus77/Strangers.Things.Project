@@ -5,7 +5,7 @@ const SinglePost = ({ children, post, setIsExpanded }) => {
     return post
     ? <div className='post-listing' onClick={e =>
         console.log('clicked')}>
-        <span className='single-post-title'><h3 className='post-title'>{post.title}</h3><span className='author'>by {post.author.username}</span></span>
+        <span className='single-post-title'><h3 className='post-title'>{post.title}</h3><span className='author'>by <span className='post-author'>{post.author.username}</span></span></span>
         <span className='description'>{post.description}</span>
         <br />
         <span className='post-bottom'>
