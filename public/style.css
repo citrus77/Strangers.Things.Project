@@ -417,6 +417,32 @@ fieldset {
     border: 3px solid #ffffff;
 }
 
+.edit-post-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-style: bold;
+    background: #00e183;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 18px;
+    align-content: center;
+    align-items: center;
+    justify-items: start;
+    border: 1px solid #ffffffb0;
+    height: 24px;
+    width: 64px;
+}
+
+.edit-post-button:hover {
+    background: #fc3232;
+}
+
+.edit-post-button:active {
+    border: 3px solid #ffffff;
+}
+
 .view-post-button {
     display: flex;
     justify-content: center;

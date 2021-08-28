@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom'
 
 import {
+  EditPost,
   Footer, 
   LogReg,
   Posts,
@@ -100,6 +101,10 @@ const App = () => {
 
         <Route exact path='/posts/:postId'>
           <PostView {...props} />
+        </Route>
+
+        <Route exact path='/posts/edit/:postId'>
+          <EditPost {...props} />
         </Route>
   
         <Route exact path="/write">

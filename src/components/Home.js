@@ -7,6 +7,7 @@ import {
 
 const Home = ({ loggedIn, messages, userData }) => {
     const posts = userData.posts;
+    console.log(posts)
     if (loggedIn) 
     return <div className='content'>
         {

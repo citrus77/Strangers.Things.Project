@@ -30,7 +30,7 @@ const WriteMessage = ({post, token}) => {
   return <>
     <form onSubmit={handleSubmit}>
       <input value={content} placeholder="Write your reply" onChange={(e) => setContent(e.target.value)}></input>
-      <button type="submit">Send</button>
+      <button type="submit" disabled={!content}>Send</button>
     </form>
   </>
 }

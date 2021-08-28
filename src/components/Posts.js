@@ -40,8 +40,11 @@ const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
                         post && <Link to={`/posts/${post._id}`} className='view-post-button'>VIEW</Link>
                     }
                     {
-                        post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash18px.png"} width='13' height='13' />DELETE</button>                   
+                        post.author._id === userData._id && <Link to={`/posts/edit/${post._id}`} className='edit-post-button'>EDIT</Link>
                     }
+                    {
+                        post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash18px.png"} width='13' height='13' />DELETE</button>                   
+                    }                    
                 </SinglePost>)
             }
         </div>
