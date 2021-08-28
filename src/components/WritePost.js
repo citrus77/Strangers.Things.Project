@@ -23,7 +23,7 @@ const WritePost = ({ setPosts, token }) => {
                     location, 
                     title, 
                     description, 
-                    price, 
+                    price: `$${price}`, 
                     willDeliver
                 }
             }

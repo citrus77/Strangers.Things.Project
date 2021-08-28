@@ -11,7 +11,7 @@ const SinglePost = ({ children, post, setIsExpanded }) => {
         <span className='post-bottom'>
             <span className="post-bottom-elem"><h3 className='post-elem-header'>Price:</h3> {post.price}</span> 
             <span className="post-bottom-elem"><h3 className='post-elem-header'>Location:</h3> {post.location}</span>
-            <span className="post-bottom-elem"><h3 className='post-elem-header'>Will Deliver:</h3> { post.willDeliver ? 'yes' : 'no' }</span>
+            <span className="post-bottom-elem"><h3 className='post-elem-header'>Will Deliver:</h3> { post.willDeliver ? 'Yes' : 'No' }</span>
             { children }            
         </span>        
     </div>

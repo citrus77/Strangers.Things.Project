@@ -30,7 +30,7 @@ const EditPost = ({ setPosts, posts, token }) => {
                     location, 
                     title, 
                     description, 
-                    price, 
+                    price: `$${price}`, 
                     willDeliver
                 }
             }

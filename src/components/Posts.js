@@ -12,7 +12,7 @@ import {
 
 const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
     const history = useHistory();
-
+    console.log(posts)
     const handleDelete = async (postId) => {
         const respObj = await callApi({
             method: 'DELETE',
