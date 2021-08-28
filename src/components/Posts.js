@@ -30,7 +30,7 @@ const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
                 {
                     token 
                             ? <Link to="/write" className="post-button">New Post</Link> 
-                            : <span className='post-button disabled'>New Post</span>                
+                            : <span className='post-button'>New Post</span>                
                 }
                 <Search />                
             </div>
@@ -43,7 +43,7 @@ const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
                         post.author._id === userData._id && <Link to={`/posts/edit/${post._id}`} className='edit-post-button'>EDIT</Link>
                     }
                     {
-                        post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash18px.png"} width='13' height='13' />DELETE</button>                   
+                        post.author._id === userData._id && <button className='delete-post' onClick={() => handleDelete(post._id)}><img src={"../img/trash.png"} width='13' height='13' />DELETE</button>                   
                     }                    
                 </SinglePost>)
             }

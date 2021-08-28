@@ -16,7 +16,9 @@ const Home = ({ loggedIn, messages, userData }) => {
                 : ''
         }
         <Link to="/write" className="post-button">New Post</Link>
-        <Messages className='messages' userData={userData} messages={messages} />
+        <div>
+            <Messages className='messages' userData={userData} messages={messages} />
+        </div>
         <div className='prev-posts'>
             {
             posts ? <h3 className='prev-posts-head'>Your previous posts</h3> : ''
@@ -24,7 +26,12 @@ const Home = ({ loggedIn, messages, userData }) => {
 
             {
             posts ? posts.map(post => {
-                return <span className='prev-post' key="post._id"><h3 className='prev-post-title'>{post.title}:</h3>  {post.description}</span>
+                return <>
+                    <div className='prev-post' key="post._id">
+                        <div className='prev-post-title' post={post}>{post.title}:</div>
+                        <div>{post.description}</div>
+                    </div>
+                </>
             }) : ''
             }
         </div>

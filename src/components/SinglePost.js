@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SinglePost = ({ children, post, setIsExpanded }) => {
+const SinglePost = ({ children, post }) => {
     
     return post
     ? <div className='post-listing' onClick={e =>

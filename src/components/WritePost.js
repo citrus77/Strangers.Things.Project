@@ -99,7 +99,7 @@ const WritePost = ({ setPosts, token }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            <button type='submit' disabled={ !title || !description || !price }>Post</button>
+            <button type='submit' disabled={ !title || !description || !price } className='edit-post-button'>Post</button>
         </form>
     </div>;
 };

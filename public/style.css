@@ -178,6 +178,11 @@ footer {
     padding: 12px;
 }
 
+.post-listing:hover { 
+    background-color: #272323;
+    transform: scale(1.1, 1.1);
+}
+
 .single-post-title {
     display: flex;
     justify-content: space-between;
@@ -219,15 +224,20 @@ h3 {
     text-decoration: none;    
 }
 
+.post-button:disabled {    
+    background-color: #272727;
+    color: #000000;
+}
+
+.post-button:disabled:hover {    
+    background-color: #272727;
+    color: #000000;
+}
+
 .post-button:hover {
     background-color: #fc3232;
     color: #ffffff;
     font-weight: bolder;
-}
-
-.post-button:disabled {    
-    background-color: #272727;
-    color: #000000;
 }
 
 .button:hover {
@@ -331,9 +341,38 @@ fieldset {
 }
 
 .search-form {
-    height: 24px;
+    min-height: 24px;
+    max-height: 24px;
     margin-bottom: 10px;    
 }
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+    justify-content: center;
+}
+
+.message-input {
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    align-content: center;
+    text-align: center;
+    border: .5px solid #fc3232;
+}
+
+.send-message-button {
+    border: 0;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    background-color: #ffffff;
+    text-decoration: none;
+    padding: 8px;
+    border: .5px solid #fc3232;
+    background-color: #fc3232;
+    color: #ffffff;
+}
+
 
 .search-input {
     border-top-left-radius: 28px;
@@ -354,9 +393,14 @@ fieldset {
 
 .search-button {
     border: 0;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
     background-color: #ffffff;
     text-decoration: none;
-    min-height: 24px;
+    padding: 8px;
+    border: .5px solid #fc3232;
+    background-color: #fc3232;
+    color: #ffffff;
 }
 
 .prev-posts {
@@ -393,8 +437,8 @@ fieldset {
     display: flex;
     font-size: 13px;
     font-style: bolder;
-    background: #ff0000;
-    color: #ffffffb0;
+    background: #fc3232;
+    color: #000000;
     padding: 8px;
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
@@ -409,7 +453,9 @@ fieldset {
 }
 
 .delete-post:hover {
-    background: #fc3232;
+    color: #ff0000;
+    font-style: bold; 
+    background: #ffffff;
     border: #ff0000;
 }
 
@@ -424,7 +470,7 @@ fieldset {
     font-size: 13px;
     font-style: bold;
     background: #00e183;
-    color: #ffffff;
+    color: #000000;
     padding: 4px;
     border-radius: 18px;
     align-content: center;
@@ -450,7 +496,7 @@ fieldset {
     font-size: 13px;
     font-style: bold;
     background: #00bee1;
-    color: #ffffff;
+    color: #000000;
     padding: 4px;
     border-radius: 18px;
     align-content: center;
@@ -471,4 +517,8 @@ fieldset {
 
 .post-author {
     font-style: bold;
+}
+
+.message-header {
+    color: #00bee1;
 }

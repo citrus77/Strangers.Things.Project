@@ -17,8 +17,6 @@ const EditPost = ({ setPosts, posts, token }) => {
 
     const post = posts.find(post => post._id === postId);
 
-    console.log(post)
-
     const handleWrite = async (e) => {
         e.preventDefault();
         const postResp = await callApi({
@@ -45,7 +43,7 @@ const EditPost = ({ setPosts, posts, token }) => {
 
         <SinglePost post={post}></SinglePost>
 
-        <form onSubmit = {handleWrite}>
+        <form className='edit-form' onSubmit = {handleWrite}>
             <fieldset>
                 <label>Title</label>
                 <input 
@@ -108,7 +106,7 @@ const EditPost = ({ setPosts, posts, token }) => {
                     <option value='true'>Yes</option>
                 </select>
             </fieldset>
-            <button type='submit' disabled={ !title || !description || !price }>Post</button>
+            <button type='submit' disabled={ !title || !description || !price } className='edit-post-button'>Post</button>
         </form>
     </div>;
 };

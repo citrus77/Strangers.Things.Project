@@ -11,7 +11,7 @@ const PostView = ({posts, loggedIn, userData, token}) => {
   return <>
     <SinglePost post={post}>
       {
-         post && post.comments && post.comments.map(comment => <div key={comment.id}>Comment: {comment.content}</div>)
+         post && post.messages && post.messages.map(message => <div key={message._id}>message: {message.content}</div>)
       }
       {
         loggedIn && userData._id !== post.author._id && <WriteMessage post={post} token={token}/>
