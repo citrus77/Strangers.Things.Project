@@ -3,8 +3,7 @@ import React from 'react';
 const SinglePost = ({ children, post }) => {
     
     return post
-    ? <div className='post-listing' onClick={e =>
-        console.log('clicked')}>
+    ? <div className='post-listing'>
         <span className='single-post-title'><h3 className='post-title'>{post.title}</h3><span className='author'>by <span className='post-author'>{post.author.username}</span></span></span>
         <span className='description'>{post.description}</span>
         <br />

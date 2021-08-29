@@ -1,13 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import {
-    Messages
-} from './index'
-
 const Home = ({ loggedIn, messages, userData }) => {
     const posts = userData.posts;
-    console.log(posts)
     if (loggedIn) 
     return <div className='content'>
         {
@@ -15,9 +10,34 @@ const Home = ({ loggedIn, messages, userData }) => {
                 ? <h2 className='page-header'>Welcome {`${userData.username}`} </h2> 
                 : ''
         }
-        <Link to="/write" className="post-button">New Post</Link>
-        <div>
-            <Messages className='messages' userData={userData} messages={messages} />
+        <Link to="/write" className="post-button"><img src='./img/write.png' height='18' width='18' /> Write A New Post</Link>
+        <div className='prev-msgs'>
+          <h3 className='prev-msgs-head'>Messages Received</h3>
+          {
+            messages.map(message => {
+              return <>
+              {userData._id !== message.fromUser._id ?
+               <div className='prev-msg'>
+                   <div className='prev-msg-title'>{message.fromUser.username} comented on "{message.post.title}":</div>
+                   <div>{message.content}</div>
+                </div>
+              : ''}
+              </>
+            })
+          }
+          <h3 className='prev-msgs-head'>Messages Sent</h3>
+          {
+            messages.map(message => {
+              return <>
+              {userData._id === message.fromUser._id ?
+               <div className='prev-msg'>
+                   <div className='prev-usrmsg-title'>You comented on "{message.post.title}":</div>
+                   <div>{message.content}</div>
+                </div>
+              : ''}
+              </>
+            })
+          }
         </div>
         <div className='prev-posts'>
             {
@@ -28,7 +48,7 @@ const Home = ({ loggedIn, messages, userData }) => {
             posts ? posts.map(post => {
                 return <>
                     <div className='prev-post' key="post._id">
-                        <div className='prev-post-title' post={post}>{post.title}:</div>
+                        <div className='prev-post-title' post={post}>{post.title}{!post.active && ` (DELETED)`}:</div>
                         <div>{post.description}</div>
                     </div>
                 </>
@@ -37,13 +57,14 @@ const Home = ({ loggedIn, messages, userData }) => {
         </div>
     </div>
     
-    else return <div className='content'>
+    else return <div className='content welcome'>
         <h2 className='page-header'>Welcome Guest!</h2>
         <br />
-        <div>
+        <div className='guest'>You can find all sorts of knick-knacks here from people all around the world! Please create an account or log in in order to create a new listing or comment on an existing post.</div>
+        <div className='guest'>
             <Link to='/account/login' className='link-to-reg-login'>Click here</Link> to log in or register!
         </div>
-        <div>
+        <div className='guest'>
             <Link to='/posts' className='link-to-reg-login'>Click here</Link> to view the posts!
         </div>
     </div>

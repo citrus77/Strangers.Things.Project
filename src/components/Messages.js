@@ -5,7 +5,6 @@ import {
 } from './index'
 
 const Messages = ({ userData, messages }) => {
-    console.log(messages)
     return <div className='messages'>
             <div className='message-header'>
                 <h2 className='header'>Your messages</h2>                

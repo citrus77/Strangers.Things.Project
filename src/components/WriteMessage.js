@@ -29,8 +29,8 @@ const WriteMessage = ({post, token}) => {
   };
   return <>
     <form onSubmit={handleSubmit} className='search-form'>
-      <input className='search-input' value={content} placeholder="Write a reply" onChange={(e) => setContent(e.target.value)}></input>
-      <button className='search-button' type="submit" disabled={!content}>Send</button>
+      <input className='message-input' value={content} placeholder="Write a reply" onChange={(e) => setContent(e.target.value)}></input>
+      <button className='send-message-button' type="submit" disabled={!content}>Send</button>
     </form>
   </>
 }

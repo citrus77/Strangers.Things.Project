@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router';
 
 import { callApi } from '../util';
@@ -43,7 +43,7 @@ const EditPost = ({ setPosts, posts, token }) => {
 
         <SinglePost post={post}></SinglePost>
 
-        <form className='edit-form' onSubmit = {handleWrite}>
+        <form onSubmit={handleWrite}>
             <fieldset>
                 <label>Title</label>
                 <input 

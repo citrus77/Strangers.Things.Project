@@ -1,15 +1,6 @@
 @import url(//db.onlinewebfonts.com/c/3f4943f4e662577a8113309f864540a4?family=ITC+Benguiat);
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
 
-.palette {
-    color: #ff0000;
-    color: #ff000049;
-    color: #000000;
-    color: #ffffffe5;
-    color: #fc3232;
-    color: #272727;
-}
-    
 * {
     display: border-box;
     margin: 0;
@@ -86,6 +77,9 @@ footer {
     font-size: 24px;
     font-family: 'ITC Benguiat', serif;
     font-weight: bolder;
+}
+.page-header {    
+    font-family: 'ITC Benguiat', serif;
 }
 
 .posts-header {
@@ -180,7 +174,7 @@ footer {
 
 .post-listing:hover { 
     background-color: #272323;
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
 }
 
 .single-post-title {
@@ -214,6 +208,24 @@ h3 {
 .post-button {
     background-color: #ffffff;
     color: #000000;
+    margin: 16px;
+    padding: 8px;
+    border-radius: 32px;
+    font-family: 'ITC Benguiat', serif;
+    font-size: 18px;
+    text-decoration: none;
+    max-height: 24px;
+    min-width: 164px;
+    resize: none;
+}
+
+.post-button:active {
+    border: 4px solid #ffffff;
+}
+
+.post-button-disabled {    
+    background-color: #272727;
+    color: #000000;    
     max-width: 20vw;
     max-height: 72px;
     margin: 16px;
@@ -221,15 +233,13 @@ h3 {
     border-radius: 32px;
     font-family: 'ITC Benguiat', serif;
     font-size: 18px;
-    text-decoration: none;    
+    text-decoration: none;  
+    max-height: 24px;
+    min-width: 164px;
+    resize: none;     
 }
 
-.post-button:disabled {    
-    background-color: #272727;
-    color: #000000;
-}
-
-.post-button:disabled:hover {    
+.post-button-disabled:hover {    
     background-color: #272727;
     color: #000000;
 }
@@ -271,6 +281,7 @@ h3 {
 input {
     width: 25em;
     padding: 8px;
+    word-wrap: break-word;
 }
 
 input:current {    
@@ -341,16 +352,12 @@ fieldset {
 }
 
 .search-form {
-    min-height: 24px;
-    max-height: 24px;
-    margin-bottom: 10px;    
-}
-
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 50vw;
-    justify-content: center;
+    min-height: 38px;
+    max-height: 38px;
+    min-width: 256px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    resize: none;
 }
 
 .message-input {
@@ -380,6 +387,8 @@ fieldset {
     align-content: center;
     text-align: center;
     border: .5px solid #fc3232;
+    max-width: 256px;
+    min-width: 256px;
 }
 
 .search-input:focus {
@@ -403,6 +412,12 @@ fieldset {
     color: #ffffff;
 }
 
+.prev-posts-head {        
+    font-family: 'ITC Benguiat', serif;
+    font-style: bold;
+    font-size: 18px;
+}
+
 .prev-posts {
     display: flex;
     flex-wrap: wrap;
@@ -423,6 +438,37 @@ fieldset {
     font-style: bold;
 }
 
+.prev-msgs-head {        
+    font-family: 'ITC Benguiat', serif;
+    font-style: bold;
+    font-size: 18px;
+}
+
+.prev-msgs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 2em;
+}
+
+.prev-msg {
+    margin: 8px;
+    font-style: italic;
+}
+
+.prev-msg-title {
+    color: #00bee1;
+    font-style: bold;
+}
+
+.prev-usrmsg-title {
+    color: #00e183;
+    font-style: bold;
+}
+/* 
 .messages {
     display: flex;
     flex-wrap: wrap;
@@ -431,7 +477,7 @@ fieldset {
     font-size: 18px;
     text-align: justify;
     margin-top: 5em;
-}
+} */
 
 .delete-post {
     display: flex;
@@ -521,4 +567,15 @@ fieldset {
 
 .message-header {
     color: #00bee1;
+}
+
+.welcome {
+    display: flex;
+    text-align: justify;
+    max-width: 60vw;
+    font-size: 21px;
+}
+
+.guest {
+    margin: 1em;
 }

@@ -10,9 +10,8 @@ import {
 
 
 
-const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
+const Posts = ({setPosts, fetchPosts, loggedIn, posts, token, userData}) => {
     const history = useHistory();
-    console.log(posts)
     const handleDelete = async (postId) => {
         const respObj = await callApi({
             method: 'DELETE',
@@ -29,10 +28,10 @@ const Posts = ({fetchPosts, loggedIn, posts, token, userData}) => {
                 <h2 className='page-header'>Posts</h2>
                 {
                     token 
-                            ? <Link to="/write" className="post-button">New Post</Link> 
-                            : <span className='post-button'>New Post</span>                
+                            ? <Link to="/write" className="post-button"><img src='./img/write.png' height='18' width='18' /> Write A New Post</Link> 
+                            : <Link to="/write" className="post-button-disabled"><img src='./img/write.png' height='18' width='18' /> Write A New Post</Link>              
                 }
-                <Search />                
+                <Search posts={posts} setPosts={setPosts} fetchPosts={fetchPosts} />                
             </div>
             {
                 posts.map(post => <SinglePost key={post._id} post={post} loggedIn={loggedIn}>

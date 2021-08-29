@@ -1,15 +1,6 @@
 @import url(//db.onlinewebfonts.com/c/3f4943f4e662577a8113309f864540a4?family=ITC+Benguiat);
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
 
-.palette {
-    color: #ff0000;
-    color: #ff000049;
-    color: #000000;
-    color: #ffffffe5;
-    color: #fc3232;
-    color: #272727;
-}
-    
 * {
     display: border-box;
     margin: 0;
@@ -86,6 +77,9 @@ footer {
     font-size: 24px;
     font-family: 'ITC Benguiat', serif;
     font-weight: bolder;
+}
+.page-header {    
+    font-family: 'ITC Benguiat', serif;
 }
 
 .posts-header {
@@ -178,6 +172,11 @@ footer {
     padding: 12px;
 }
 
+.post-listing:hover { 
+    background-color: #272323;
+    transform: scale(1.05, 1.05);
+}
+
 .single-post-title {
     display: flex;
     justify-content: space-between;
@@ -209,6 +208,24 @@ h3 {
 .post-button {
     background-color: #ffffff;
     color: #000000;
+    margin: 16px;
+    padding: 8px;
+    border-radius: 32px;
+    font-family: 'ITC Benguiat', serif;
+    font-size: 18px;
+    text-decoration: none;
+    max-height: 24px;
+    min-width: 164px;
+    resize: none;
+}
+
+.post-button:active {
+    border: 4px solid #ffffff;
+}
+
+.post-button-disabled {    
+    background-color: #272727;
+    color: #000000;    
     max-width: 20vw;
     max-height: 72px;
     margin: 16px;
@@ -216,18 +233,21 @@ h3 {
     border-radius: 32px;
     font-family: 'ITC Benguiat', serif;
     font-size: 18px;
-    text-decoration: none;    
+    text-decoration: none;  
+    max-height: 24px;
+    min-width: 164px;
+    resize: none;     
+}
+
+.post-button-disabled:hover {    
+    background-color: #272727;
+    color: #000000;
 }
 
 .post-button:hover {
     background-color: #fc3232;
     color: #ffffff;
     font-weight: bolder;
-}
-
-.post-button:disabled {    
-    background-color: #272727;
-    color: #000000;
 }
 
 .button:hover {
@@ -331,9 +351,41 @@ fieldset {
 }
 
 .search-form {
-    height: 24px;
-    margin-bottom: 10px;    
+    min-height: 38px;
+    max-height: 38px;
+    min-width: 256px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    resize: none;
 }
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+    justify-content: center;
+}
+
+.message-input {
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    align-content: center;
+    text-align: center;
+    border: .5px solid #fc3232;
+}
+
+.send-message-button {
+    border: 0;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    background-color: #ffffff;
+    text-decoration: none;
+    padding: 8px;
+    border: .5px solid #fc3232;
+    background-color: #fc3232;
+    color: #ffffff;
+}
+
 
 .search-input {
     border-top-left-radius: 28px;
@@ -341,6 +393,8 @@ fieldset {
     align-content: center;
     text-align: center;
     border: .5px solid #fc3232;
+    max-width: 256px;
+    min-width: 256px;
 }
 
 .search-input:focus {
@@ -354,9 +408,20 @@ fieldset {
 
 .search-button {
     border: 0;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
     background-color: #ffffff;
     text-decoration: none;
-    min-height: 24px;
+    padding: 8px;
+    border: .5px solid #fc3232;
+    background-color: #fc3232;
+    color: #ffffff;
+}
+
+.prev-posts-head {        
+    font-family: 'ITC Benguiat', serif;
+    font-style: bold;
+    font-size: 18px;
 }
 
 .prev-posts {
@@ -379,6 +444,37 @@ fieldset {
     font-style: bold;
 }
 
+.prev-msgs-head {        
+    font-family: 'ITC Benguiat', serif;
+    font-style: bold;
+    font-size: 18px;
+}
+
+.prev-msgs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 2em;
+}
+
+.prev-msg {
+    margin: 8px;
+    font-style: italic;
+}
+
+.prev-msg-title {
+    color: #00bee1;
+    font-style: bold;
+}
+
+.prev-usrmsg-title {
+    color: #00e183;
+    font-style: bold;
+}
+/* 
 .messages {
     display: flex;
     flex-wrap: wrap;
@@ -387,15 +483,15 @@ fieldset {
     font-size: 18px;
     text-align: justify;
     margin-top: 5em;
-}
+} */
 
 .delete-post {
     display: flex;
     font-size: 13px;
     font-style: bolder;
-    background: #ff0000;
-    color: #ffffffb0;
-    padding: 4px;
+    background: #fc3232;
+    color: #000000;
+    padding: 8px;
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
     align-content: center;
@@ -409,7 +505,9 @@ fieldset {
 }
 
 .delete-post:hover {
-    background: #fc3232;
+    color: #ff0000;
+    font-style: bold; 
+    background: #ffffff;
     border: #ff0000;
 }
 
@@ -424,7 +522,7 @@ fieldset {
     font-size: 13px;
     font-style: bold;
     background: #00e183;
-    color: #ffffff;
+    color: #000000;
     padding: 4px;
     border-radius: 18px;
     align-content: center;
@@ -450,7 +548,7 @@ fieldset {
     font-size: 13px;
     font-style: bold;
     background: #00bee1;
-    color: #ffffff;
+    color: #000000;
     padding: 4px;
     border-radius: 18px;
     align-content: center;
@@ -471,4 +569,19 @@ fieldset {
 
 .post-author {
     font-style: bold;
+}
+
+.message-header {
+    color: #00bee1;
+}
+
+.welcome {
+    display: flex;
+    text-align: justify;
+    max-width: 60vw;
+    font-size: 21px;
+}
+
+.guest {
+    margin: 1em;
 }

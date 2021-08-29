@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import {
   EditPost,
@@ -25,6 +26,8 @@ const App = () => {
   const [ userData, setUserData ] = useState({});
   const [ isExpanded, setIsExpanded ] = useState(false)
   
+  const history = useHistory();
+
   const fetchPosts = async () => {
     const response = await fetch(`${REACT_APP_BASE_URL}/posts`);            
     const results = await response.json();
@@ -72,7 +75,7 @@ const App = () => {
           <Link to="/home" className="nav-link">Home</Link>
           { 
             token
-                  ? <button onClick={() => { setToken(''); setLoggedIn(false)}} className='nav-link logout set-right'>Log out</button>
+                  ? <button onClick={() => { setToken(''); setLoggedIn(false); history.push('./')}} className='nav-link logout set-right'>Log out</button>
                   : <Link to="/account/login" className="nav-link set-right">Login/Register</Link>
           }
         </div>
