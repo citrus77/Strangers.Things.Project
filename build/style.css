@@ -281,6 +281,7 @@ h3 {
 input {
     width: 25em;
     padding: 8px;
+    word-wrap: break-word;
 }
 
 input:current {    
@@ -357,13 +358,6 @@ fieldset {
     margin-bottom: 10px;
     overflow: hidden;
     resize: none;
-}
-
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 50vw;
-    justify-content: center;
 }
 
 .message-input {
