@@ -1,5 +1,15 @@
-@import url(//db.onlinewebfonts.com/c/3f4943f4e662577a8113309f864540a4?family=ITC+Benguiat);
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+/* @import url(//db.onlinewebfonts.com/c/3f4943f4e662577a8113309f864540a4?family=ITC+Benguiat);
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap'); */
+
+@font-face {
+    font-family: 'Benguiat';
+    src: local('Benguiat'), url(./fonts/Benguiat.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: local('Atkinson Hyperlegible'), url(./fonts/Atkinson-Hyperlegible.ttf) format('truetype')
+}
 
 * {
     display: border-box;
@@ -77,11 +87,11 @@ footer {
 
 .site-header {
     font-size: 24px;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-weight: bolder;
 }
 .page-header {    
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
 }
 
 .posts-header {
@@ -91,7 +101,7 @@ footer {
     align-items: center;
     width: 80vw;
     font-size: 24px;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-weight: bolder;   
 }
 
@@ -102,7 +112,7 @@ footer {
     min-height: 32px;
     border-radius: 34px;
     background-color: #ff0000;    
-    font-family: 'ITC Benguiat', serif;    
+    font-family: 'Benguiat', serif;    
     font-size: 18px;
 }
 
@@ -130,7 +140,7 @@ footer {
     border-bottom-right-radius: 34px;
     background-color: #ff0000;
     border: none;        
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-size: 18px;
     font-weight: bold;
 }
@@ -190,7 +200,7 @@ footer {
     color: #fc3232d7;
     padding-bottom: 4px;
     font-size: 18px;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
 }
 
 .author {
@@ -213,7 +223,7 @@ h3 {
     margin: 16px;
     padding: 8px;
     border-radius: 32px;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-size: 18px;
     text-decoration: none;
     max-height: 24px;
@@ -233,7 +243,7 @@ h3 {
     margin: 16px;
     padding: 8px;
     border-radius: 32px;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-size: 18px;
     text-decoration: none;  
     max-height: 24px;
@@ -258,7 +268,7 @@ h3 {
 }
 
 .link-to-reg-login {    
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     text-decoration: none;
     font-size: 18px;
     color: #ffffff;
@@ -269,7 +279,7 @@ h3 {
 }
 
 .log-reg {       
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -316,7 +326,7 @@ fieldset {
 .login-header {
     display: flex;
     justify-content: center;    
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     border-bottom: 1px solid #fc3232;
     padding-bottom: 8px;
     color: #fc3232;
@@ -327,7 +337,7 @@ fieldset {
     font-size: 16px;    
     background-color: #ffffff;
     color: #000000;
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     text-decoration: none;    
     max-height: 72px;
     margin: 16px;
@@ -414,7 +424,7 @@ fieldset {
 }
 
 .prev-posts-head {        
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-style: bold;
     font-size: 18px;
 }
@@ -440,7 +450,7 @@ fieldset {
 }
 
 .prev-msgs-head {        
-    font-family: 'ITC Benguiat', serif;
+    font-family: 'Benguiat', serif;
     font-style: bold;
     font-size: 18px;
 }

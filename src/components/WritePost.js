@@ -14,7 +14,7 @@ const WritePost = ({ setPosts, token }) => {
 
     const handleWrite = async (e) => {
         e.preventDefault();
-        const postResp = await callApi({
+        await callApi({
             url: '/posts', 
             method: 'POST', 
             token, 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SinglePost from './SinglePost';
 
 const Search = ({fetchPosts, posts, setPosts}) => {
     const [query, setQuery] = useState('')

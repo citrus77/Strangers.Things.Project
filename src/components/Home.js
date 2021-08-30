@@ -10,7 +10,7 @@ const Home = ({ loggedIn, messages, userData }) => {
                 ? <h2 className='page-header'>Welcome {`${userData.username}`} </h2> 
                 : ''
         }
-        <Link to="/write" className="post-button"><img src='./img/write.png' height='18' width='18' /> Write A New Post</Link>
+        <Link to="/write" className="post-button"><img src='./img/write.png' height='18' width='18' alt='write' /> Write A New Post</Link>
         <div className='prev-msgs'>
           <h3 className='prev-msgs-head'>Messages Received</h3>
           {

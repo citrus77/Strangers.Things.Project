@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router';
 
 import { callApi } from '../util';
@@ -19,7 +19,7 @@ const EditPost = ({ setPosts, posts, token }) => {
 
     const handleWrite = async (e) => {
         e.preventDefault();
-        const postResp = await callApi({
+        await callApi({
             url: `/posts/${postId}`, 
             method: 'PATCH', 
             token, 

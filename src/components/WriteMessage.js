@@ -10,7 +10,7 @@ const WriteMessage = ({post, token}) => {
     e.preventDefault();
     try {
         const url = `/posts/${post._id}/messages`;
-        const data = await callApi({
+        await callApi({
             method: 'POST',
             url,
             token,

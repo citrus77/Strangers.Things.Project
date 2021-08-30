@@ -24,7 +24,6 @@ const App = () => {
   const [ posts, setPosts ] = useState([]);  
   const [ token, setToken ] = useState('');
   const [ userData, setUserData ] = useState({});
-  const [ isExpanded, setIsExpanded ] = useState(false)
   
   const history = useHistory();
 
@@ -42,16 +41,14 @@ const App = () => {
     setCurrentPostId, 
     loggedIn, 
     setLoggedIn, 
+    messages, 
+    setMessages, 
     token, 
     setToken, 
     posts, 
     setPosts, 
     userData, 
-    setUserData, 
-    messages, 
-    setMessages,
-    isExpanded,
-    setIsExpanded,
+    setUserData,
 
     fetchPosts
   }
